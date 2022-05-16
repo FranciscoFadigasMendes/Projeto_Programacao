@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h> //biblioteca que permite usar acentos e caracteres especiais
+#include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
+                    NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
 
 void menu_inicial();
 
-struct data {                 // Estruta geral especÃ­fica para as datas
+struct data {                 // Estruta geral especifica para as datas
     int dia,mes,ano;
 };
 
-struct geral {               //Estrutura que contÃ©m todas as variÃ¡veis
+struct geral {               //Estrutura que contem todas as variÃ¡veis
     int add_numero_id;
     char designacao[50];
     char nome_colab[50];
@@ -37,7 +38,7 @@ return 0;
 void menu_inicial()
 {
 
-setlocale(LC_ALL, "Portuguese"); //AVISO-------------TENTAR POR A ACEITAR ACENTOS E CARACTEREES
+setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
 
 printf("\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
 printf("Total de Computadores:(memoria a defenir)\t\t\t");
@@ -56,6 +57,5 @@ printf("Selecione a Opção:(memoria a defenir)\n\n\n");
 
 }
 //-------------------------------------------------------
-
 
 
