@@ -32,6 +32,7 @@ return 0;
 }
 
 //------------------------------------------------------
+//---------------Funcões Secundárias--------------------
 
 void menu_inicial()
 {
@@ -50,9 +51,11 @@ printf("3. Registar Intervenção\n");
 printf("4. Listar\n");
 printf("5. Informações\n");
 printf("6. Gravar\n");
-printf("0. Sair\n");
-printf("\t\tSelecione a Opção:(memoria a defenir)");
+printf("0. Sair\n\n");
+printf("Selecione a Opção:(memoria a defenir)\n\n\n");
 
 }
+//-------------------------------------------------------
+
 
 
