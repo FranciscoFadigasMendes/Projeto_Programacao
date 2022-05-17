@@ -1,1 +1,168 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
+                    NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
+#define N_PC 25
+
+
+void menu_inicial();
+void opc_menu();
+void add_computador();
+void solicitar_intervencao();
+void registar_intervencao();
+void lista();
+void info();
+void gravar();
+void sair();
+
+
+struct data {                 // Estruta  especifica para as datas
+    int dia,mes,ano;
+};
+
+struct geral{               //Estrutura que contem todas as variáveis
+    int add_numero_id;
+    char designacao[50];
+    char nome_colab[50];
+    struct data data_atribuicao;
+    int estado_computador;
+    float valor_equipamento;
+    char codigo_int[50];
+    int numero_id;
+    struct data data_pedido;
+    char descricao[200];
+};
+
+int contador[0];   // protótipo de uma matriz de 1 uma posição para servir de contador
+
+
+//------------------------------------------------------
+//------------------------------------------------------
+
+int main()
+{
+    menu_inicial();
+    opc_menu();
+
+return 0;
+}
+//------------------------------------------------------
+//---------------Funcões Secundárias--------------------
+
+void menu_inicial()                 //Função que imprime o display do menu principal
+{
+
+setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
+
+printf("\n\n\n\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
+printf("Total de Computadores: %d\t\t\t",contador[0]);
+printf("Valor dos Computadores(euros):(memoria a definir)\n");
+printf("Intervenções Solicitadas:\t\t\t\t\t");
+printf("Intervenções Efetuadas:(memoria a definir)\n\n");
+
+printf("1. Novo Computador\n");
+printf("2. Solicitar Intervenção\n");
+printf("3. Registar Intervenção\n");
+printf("4. Listar\n");
+printf("5. Informações\n");
+printf("6. Gravar\n");
+printf("0. Sair\n\n");
+printf("Selecione a Opção:");
+}
+
+//-------------------------------------------------------
+
+void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
+{
+    char opc;
+
+    fflush(stdin);
+    scanf("%d",&opc);
+
+    switch(opc)
+    {
+    case 1:
+        add_computador();
+        break;
+
+    case 2:
+        solicitar_intervencao();
+        break;
+
+    case 3:
+        registar_intervencao();
+        break;
+
+    case 4:
+        lista();
+        break;
+
+    case 5:
+        info();
+        break;
+
+    case 6:
+        gravar();
+        break;
+
+    case 7:
+        sair();
+        break;
+
+    default:
+        printf("Escolha apenas uma das opções");
+    }
+
+}
+/*--------------------------------------------------------------------------*/
+void add_computador()
+{
+    int i,n;
+    struct geral computador[N_PC];
+
+    contador[0]++;
+
+    printf("\nIntroduza o Número de Identificação:\n");
+    fflush(stdin);
+    scanf("%d",&computador[contador[0]].add_numero_id);
+
+        printf("\n0:%d\n",computador[0].add_numero_id);
+        printf("\n1:%d\n",computador[1].add_numero_id);
+        printf("\n2:%d\n",computador[2].add_numero_id);
+        printf("\n3:%d\n",computador[3].add_numero_id);
+
+    main();
+}
+/*--------------------------------------------------------------------------*/
+void solicitar_intervencao()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void registar_intervencao()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void lista()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void info()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void gravar()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void sair()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+
 
