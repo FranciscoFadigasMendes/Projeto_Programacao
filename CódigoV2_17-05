@@ -33,7 +33,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     char descricao[200];
 };
 
-int contador[0];
+int contador[0];   // prototipo de uma matriz de 1 uma posição para servir de contador
 
 
 //------------------------------------------------------
@@ -121,18 +121,17 @@ void add_computador()
     struct geral computador[N_PC];
 
     contador[0]++;
-    n=contador[0];
 
-    printf("contador: %d \n",n);
+    printf("contador: %d \n",contador[0]);
 
     printf("Introduza o Número de Identificação\n");
     fflush(stdin);
-    scanf("%d",&computador[n].add_numero_id);
+    scanf("%d",&computador[contador[0]].add_numero_id);
 
-   for(i=0;i<4;i++){
-        printf("Os valores são:\n");
-        printf("1:%d",computador[i].add_numero_id);
-    }
+        printf("\n0:%d\n",computador[0].add_numero_id);
+        printf("\n1:%d\n",computador[1].add_numero_id);
+        printf("\n2:%d\n",computador[2].add_numero_id);
+        printf("\n3:%d\n",computador[3].add_numero_id);
 
     main();
 }
