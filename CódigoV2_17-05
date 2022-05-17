@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
                     NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
+#define MAX_PC 25
+#include <string.h>
 
 void menu_inicial();
 void opc_menu();
@@ -12,6 +14,7 @@ void lista();
 void info();
 void gravar();
 void sair();
+
 
 struct data {                 // Estruta geral especifica para as datas
     int dia,mes,ano;
@@ -44,7 +47,7 @@ return 0;
 //------------------------------------------------------
 //---------------Funcões Secundárias--------------------
 
-void menu_inicial()                 //função que imprime o display do menu principal
+void menu_inicial()                 //Função que imprime o display do menu principal
 {
 
 setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
@@ -62,7 +65,7 @@ printf("4. Listar\n");
 printf("5. Informações\n");
 printf("6. Gravar\n");
 printf("0. Sair\n\n");
-
+printf("Selecione a Opção:(memoria a definir)\n\n\n");
 }
 
 //-------------------------------------------------------
@@ -71,9 +74,8 @@ void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-
 {
     char opc;
 
-    printf("Selecione a Opção:(memoria a definir)\n\n\n");
+    fflush(stdin);
     scanf("%c",&opc);
-
 
     switch(opc)
     {
@@ -112,7 +114,21 @@ void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-
 /*--------------------------------------------------------------------------*/
 void add_computador()
 {
-printf();
+int num_id[24],i;
+char resposta[4];
+char sim[4] = "sim";
+
+do{
+printf("Introduza o Número de Identificação\n");
+fflush(stdin);
+scanf("%d",&num_id[i]);
+
+printf("Deseja continuar a adicionar computadores?\n Caso queira escreva 'sim':");
+scanf("%s",&resposta);
+}
+
+while(strcmp(sim,resposta)==0);
+
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
@@ -145,3 +161,4 @@ void sair()
 
 }
 /*--------------------------------------------------------------------------*/
+
