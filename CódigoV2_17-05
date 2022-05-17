@@ -7,6 +7,7 @@
 
 void menu_inicial();
 void opc_menu();
+void novo_computador
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -112,9 +113,8 @@ void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-
     }
 }
 /*--------------------------------------------------------------------------*/
-void add_computador()
+void novo_computador
 {
-int num_id[24],i;
 char resposta[4];
 char sim[4] = "sim";
 
@@ -122,6 +122,28 @@ do{
 printf("Introduza o Número de Identificação\n");
 fflush(stdin);
 scanf("%d",&num_id[i]);
+
+
+
+printf("Deseja continuar a adicionar computadores?\n Caso queira escreva 'sim':");
+scanf("%s",&resposta);
+}
+
+while(strcmp(sim,resposta)==0);
+
+/*-----------------------------------------------------------------------------*/
+void add_computador()
+{
+
+char resposta[4];
+char sim[4] = "sim";
+
+do{
+printf("Introduza o Número de Identificação\n");
+fflush(stdin);
+scanf("%d",&num_id[i]);
+
+
 
 printf("Deseja continuar a adicionar computadores?\n Caso queira escreva 'sim':");
 scanf("%s",&resposta);
