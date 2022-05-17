@@ -4,6 +4,14 @@
                     NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
 
 void menu_inicial();
+void opc_menu(void add_computador(),void solicitar_intervencao(),void registar_intervencao(),void lista(),void info(),void gravar(),void sair());
+void add_computador();
+void solicitar_intervencao();
+void registar_intervencao();
+void lista();
+void info();
+void gravar();
+void sair();
 
 struct data {                 // Estruta geral especifica para as datas
     int dia,mes,ano;
@@ -28,6 +36,7 @@ int main()
 int selecao_inicial;
 
     menu_inicial();
+    opc_menu(add_computador(),solicitar_intervencao(),registar_intervencao(),lista(),info(),gravar(),sair());
 
 return 0;
 }
@@ -54,6 +63,83 @@ printf("5. Informações\n");
 printf("6. Gravar\n");
 printf("0. Sair\n\n");
 printf("Selecione a Opção:(memoria a definir)\n\n\n");
+}
+
+//-------------------------------------------------------
+
+void opc_menu(void add_computador(),void solicitar_intervencao(),void registar_intervencao(),void lista(),void info(),void gravar(),void sair())
+{
+    char opc;
+    scanf("%c",&opc)
+
+    switch(opc)
+    {
+    case '1':
+        add_computador();
+        break;
+
+    case '2':
+        solicitar_intervencao();
+        break;
+
+    case '3':
+        registar_intervencao();
+        break;
+
+    case '4':
+        lista();
+        break;
+
+    case '5':
+        info();
+        break;
+
+    case '6':
+        gravar();
+        break;
+
+    case '0':
+        sair();
+        break;
+
+    default:
+        printf("Escolha apenas uma das opções");
+    }
+}
+/*--------------------------------------------------------------------------*/
+void add_computador()
+{
 
 }
-//-------------------------------------------------------
+/*--------------------------------------------------------------------------*/
+void solicitar_intervencao()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void registar_intervencao()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void lista()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void info()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void gravar()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+
+void sair()
+{
+
+}
+/*--------------------------------------------------------------------------*/
