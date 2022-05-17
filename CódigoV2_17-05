@@ -3,11 +3,10 @@
 #include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
                     NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
 #define MAX_PC 25
-#include <string.h>
+
 
 void menu_inicial();
 void opc_menu();
-void novo_computador
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -38,8 +37,6 @@ struct geral {               //Estrutura que contem todas as variÃ¡veis
 
 int main()
 {
-int selecao_inicial;
-
     menu_inicial();
     opc_menu();
 
@@ -113,45 +110,17 @@ void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-
     }
 }
 /*--------------------------------------------------------------------------*/
-void novo_computador
-{
-char resposta[4];
-char sim[4] = "sim";
-
-do{
-printf("Introduza o Número de Identificação\n");
-fflush(stdin);
-scanf("%d",&num_id[i]);
-
-
-
-printf("Deseja continuar a adicionar computadores?\n Caso queira escreva 'sim':");
-scanf("%s",&resposta);
-}
-
-while(strcmp(sim,resposta)==0);
-
-/*-----------------------------------------------------------------------------*/
 void add_computador()
 {
+    int num_id[MAX_PC],i;
 
-char resposta[4];
-char sim[4] = "sim";
+    printf("Introduza o Número de Identificação\n");
+    fflush(stdin);
+    scanf("%d",&num_id[i]);
 
-do{
-printf("Introduza o Número de Identificação\n");
-fflush(stdin);
-scanf("%d",&num_id[i]);
-
-
-
-printf("Deseja continuar a adicionar computadores?\n Caso queira escreva 'sim':");
-scanf("%s",&resposta);
+    main();
 }
 
-while(strcmp(sim,resposta)==0);
-
-}
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
 {
