@@ -16,7 +16,7 @@ void gravar();
 void sair();
 
 
-struct data {                 // Estruta geral especifica para as datas
+struct data {                 // Estruta  especifica para as datas
     int dia,mes,ano;
 };
 
@@ -33,7 +33,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     char descricao[200];
 };
 
-int contador[0];   // prototipo de uma matriz de 1 uma posição para servir de contador
+int contador[0];   // protótipo de uma matriz de 1 uma posição para servir de contador
 
 
 //------------------------------------------------------
@@ -54,8 +54,8 @@ void menu_inicial()                 //Função que imprime o display do menu pri
 
 setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
 
-printf("\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
-printf("Total de Computadores:(memoria a definir)\t\t\t");
+printf("\n\n\n\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
+printf("Total de Computadores: %d\t\t\t",contador[0]);
 printf("Valor dos Computadores(euros):(memoria a definir)\n");
 printf("Intervenções Solicitadas:\t\t\t\t\t");
 printf("Intervenções Efetuadas:(memoria a definir)\n\n");
@@ -67,7 +67,7 @@ printf("4. Listar\n");
 printf("5. Informações\n");
 printf("6. Gravar\n");
 printf("0. Sair\n\n");
-printf("Selecione a Opção:(memoria a definir)\n\n\n");
+printf("Selecione a Opção:");
 }
 
 //-------------------------------------------------------
@@ -122,9 +122,7 @@ void add_computador()
 
     contador[0]++;
 
-    printf("contador: %d \n",contador[0]);
-
-    printf("Introduza o Número de Identificação\n");
+    printf("\nIntroduza o Número de Identificação:\n");
     fflush(stdin);
     scanf("%d",&computador[contador[0]].add_numero_id);
 
