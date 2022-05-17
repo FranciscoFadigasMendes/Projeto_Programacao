@@ -4,7 +4,7 @@
                     NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
 
 void menu_inicial();
-void opc_menu(void add_computador(),void solicitar_intervencao(),void registar_intervencao(),void lista(),void info(),void gravar(),void sair());
+void opc_menu();
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -30,17 +30,17 @@ struct geral {               //Estrutura que contem todas as variÃ¡veis
     char descricao[200];
 };
 //------------------------------------------------------
+//------------------------------------------------------
 
 int main()
 {
 int selecao_inicial;
 
     menu_inicial();
-    opc_menu(add_computador(),solicitar_intervencao(),registar_intervencao(),lista(),info(),gravar(),sair());
+    opc_menu();
 
 return 0;
 }
-
 //------------------------------------------------------
 //---------------Funcões Secundárias--------------------
 
@@ -62,15 +62,18 @@ printf("4. Listar\n");
 printf("5. Informações\n");
 printf("6. Gravar\n");
 printf("0. Sair\n\n");
-printf("Selecione a Opção:(memoria a definir)\n\n\n");
+
 }
 
 //-------------------------------------------------------
 
-void opc_menu(void add_computador(),void solicitar_intervencao(),void registar_intervencao(),void lista(),void info(),void gravar(),void sair())
+void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
 {
     char opc;
-    scanf("%c",&opc)
+
+    printf("Selecione a Opção:(memoria a definir)\n\n\n");
+    scanf("%c",&opc);
+
 
     switch(opc)
     {
@@ -109,7 +112,7 @@ void opc_menu(void add_computador(),void solicitar_intervencao(),void registar_i
 /*--------------------------------------------------------------------------*/
 void add_computador()
 {
-
+printf();
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
@@ -137,7 +140,6 @@ void gravar()
 
 }
 /*--------------------------------------------------------------------------*/
-
 void sair()
 {
 
