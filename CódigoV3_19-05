@@ -15,6 +15,8 @@ void info();
 void gravar();
 void sair();
 
+void estado_pc();
+
 int contador=0;   // inicializa o contador a 0
 
 
@@ -40,12 +42,14 @@ int main()
 
     do{
         menu_inicial();
+
         fflush(stdin);
         scanf("%d",&opc);
+
         opc_menu(opc);
+
         printf("\n\n---------------------------------------------------------------");
-    }
-    while(opc=!0);
+    }while(opc=!0);
 
 
 return 0;
@@ -141,6 +145,9 @@ void add_computador()
         fflush(stdin);
         scanf("%d",&computador[contador].data_atribuicao[2]);
 
+      printf("Estado do computador:\n\ 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n");
+      scanf("%d",&computador[contador].estado_computador);
+
 
 
 
@@ -149,10 +156,33 @@ void add_computador()
     printf("\nLista dos Computadores criados:\n");
         for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
             {
-             printf("\n\nComputador %d :\nCódigo-->%d\nDesignação-->%s\nNome do Colaborador-->%s\nData:%d-%d-%d",
-                   i+1,computador[i].add_numero_id,computador[contador].designacao[50],computador[contador].nome_colab[50],
-                   computador[contador].data_atribuicao[0],computador[contador].data_atribuicao[1],computador[contador].data_atribuicao[2]);
+							printf("Computador: Nº%d \n",computador[contador].add_numero_id);
+              printf("\t Designação: %s \n",computador[contador].designacao[50]);
+              printf("\t Nome do Colaborador:%s \n",computador[contador].nome_colab);
+              printf("\t Data Atribuição do Computador: %d-%d-%d",computador[contador].data_atribuicao[0],computador[contador].data_atribuicao[1],computador[contador].data_atribuicao[2]);
+              estado_pc();
             }
+}
+/*--------------------------------------------------------------------------*/
+void estado_pc(struct geral computador[N_PC])
+{
+switch (computador[contador].estado_computador){
+case 0 :
+printf("operacional\n");
+break;
+
+case 1 :
+printf("intervencionar\n");
+break;
+
+case 2 :
+printf("avariado\n");
+break;
+
+default:
+printf("Não atribuida\n");
+}
+
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
