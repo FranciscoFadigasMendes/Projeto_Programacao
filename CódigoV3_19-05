@@ -3,10 +3,16 @@
 #include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
                     NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
 #define N_PC 25
+/*PROBLEMAS:
+--DO WHILE PARA DEPOIS DE DUAS VEZES,
+--STRINGS NO ADD:COMPUTADOR N FUNCIONAM,
+
+*/
+
 
 
 void menu_inicial();
-int opc_menu(int);
+int opc_menu(int opc);
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -15,8 +21,6 @@ void info();
 void gravar();
 void sair();
 
-void estado_pc();
-
 int contador=0;   // inicializa o contador a 0
 
 
@@ -24,7 +28,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     int add_numero_id;
     char designacao[50];
     char nome_colab[50];
-    int data_atribuicao[3];
+    int data_atribuicao[2];
     int estado_computador;
     float valor_equipamento;
     char codigo_int[50];
@@ -42,14 +46,12 @@ int main()
 
     do{
         menu_inicial();
-
         fflush(stdin);
         scanf("%d",&opc);
-
-        opc = opc_menu(opc);
-
+        opc_menu(opc);
         printf("\n\n---------------------------------------------------------------");
-    }while(opc != 0);
+    }
+    while(opc=!0);
 
 
 return 0;
@@ -74,7 +76,6 @@ printf("3. Registar Intervenção\n");
 printf("4. Listar\n");
 printf("5. Informações\n");
 printf("6. Gravar\n");
-printf("0. Sair\n\n");
 printf("Selecione a Opção:");
 }
 
@@ -160,7 +161,7 @@ void add_computador()
               printf("-->Computador Nº%d \n",i+1);
               printf("\t Designação: %s \n",computador[i+1].designacao[50]);
               printf("\t Nome do Colaborador:% s \n",computador[i+1].nome_colab[50]);
-              printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[i+1].data_atribuicao[0],computador[i].data_atribuicao[1],computador[i].data_atribuicao[2]);
+              printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[i].data_atribuicao[0],computador[i].data_atribuicao[1],computador[i].data_atribuicao[2]);
               printf("\t Estado do computador: ");
               estado_pc(computador[N_PC],contador);
               printf("\t Valor do computador:%.2f",computador[i].valor_equipamento);
@@ -171,7 +172,7 @@ void add_computador()
 void estado_pc(struct geral computador[N_PC],int contador)
 {
 
- printf("\nValor que chega ao swtich:%d\n",computador[contador].estado_computador);
+ printf("\n\tValor que chega ao swtich:%d\n",computador[contador].estado_computador);
 
 switch (computador[contador].estado_computador){
 
@@ -214,6 +215,11 @@ void info()
 }
 /*--------------------------------------------------------------------------*/
 void gravar()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void sair()
 {
 
 }
