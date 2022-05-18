@@ -15,25 +15,21 @@ void info();
 void gravar();
 void sair();
 
+int contador=0;   // inicilaiza o contador a 0
 
-struct data {                 // Estruta  especifica para as datas
-    int dia,mes,ano;
-};
 
 struct geral{               //Estrutura que contem todas as variáveis
     int add_numero_id;
     char designacao[50];
     char nome_colab[50];
-    struct data data_atribuicao;
+    int data_atribuicao[2];
     int estado_computador;
     float valor_equipamento;
     char codigo_int[50];
     int numero_id;
-    struct data data_pedido;
+    int data_pedido[2];
     char descricao[200];
 };
-
-int contador=0;   // inicilaiza o contador a 0
 
 
 //------------------------------------------------------
@@ -48,10 +44,10 @@ int main()
         fflush(stdin);
         scanf("%d",&opc);
         opc_menu(opc);
+        printf("\n\n---------------------------------------------------------------");
     }
     while(opc=!0);
 
-    printf("-----------------------------------------------------");
 
 return 0;
 }
@@ -104,7 +100,7 @@ void opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redire
     case 6:
         gravar();
         break;
-    case 7:
+    case 0:
         sair();
         break;
     default:
@@ -123,23 +119,37 @@ void add_computador()
 
     printf("\nIntroduza o Número de Identificação:\n");
     fflush(stdin);
-    scanf("%d",&computador[contador].add_numero_id);
+    scanf("%d", &computador[contador].add_numero_id);
 
     printf("Introduza a Designação do Computador:\n");
     fflush(stdin);
-    scanf("%s",&computador[contador].designacao[50]);
+    scanf("%s", &computador[contador].designacao[50]);
 
     printf("Introduza o Nome do Colaborador que foi atribuído o portátil:\n");
     fflush(stdin);
-    scanf("%s",&computador[contador].nome_colab[50]);
+    scanf("%s", &computador[contador].nome_colab[50]);
+    
+    printf("Data de Atribuição do Computador:\n");
+        printf("Dia:")
+        fflush(stdin);
+        scanf("%d",computador[contador]data_atribuicao[0]);
+        
+        printf("Mês:")
+        fflush(stdin);
+        scanf("%d",computador[contador]data_atribuicao[1]);    
+        
+        printf("Ano:")
+        fflush(stdin);
+        scanf("%d",computador[contador]data_atribuicao[2]);
 
     contador++;       //soma +1 ao contador por cada vez que se adiciona um computador
+
     printf("\nLista dos Computadores criados:\n");
         for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
             {
-            printf("\n\nComputador %d :\nCódigo-->%d\nDesignação-->%s\nNome do Colaborador:%s",i+1,computador[i].add_numero_id,computador[contador].designacao[50],computador[contador].nome_colab);
+             printf("\n\nComputador %d :\nCódigo-->%d\nDesignação-->%s\nNome do Colaborador-->%s",
+                   i+1,computador[i].add_numero_id,computador[contador].designacao[50],computador[contador].nome_colab[50]);
             }
-
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
