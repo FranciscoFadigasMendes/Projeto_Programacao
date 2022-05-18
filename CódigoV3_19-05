@@ -17,7 +17,7 @@ void sair();
 
 void estado_pc();
 
-int contador = 0;   // inicializa o contador a 0
+int contador=0;   // inicializa o contador a 0
 
 
 struct geral{               //Estrutura que contem todas as variáveis
@@ -29,7 +29,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     float valor_equipamento;
     char codigo_int[50];
     int numero_id;
-    int data_pedido[3];
+    int data_pedido[2];
     char descricao[200];
 };
 
@@ -144,8 +144,13 @@ void add_computador()
         fflush(stdin);
         scanf("%d", &computador[contador].data_atribuicao[2]);
 
-      printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n");
-      scanf("%d", &computador[contador].estado_computador);
+        printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n"); //Adicionar Estado do Computador
+        fflush(stdin);
+        scanf("%d", &computador[contador].estado_computador);
+
+        printf("Valor do Computador:");
+        fflush(stdin);
+        scanf("%.3f",&computador[contador].valor_equipamento);
 
 					contador++;         //soma +1 ao contador por cada vez que se adiciona um computador
 
@@ -158,32 +163,34 @@ void add_computador()
               printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[i].data_atribuicao[0],computador[i].data_atribuicao[1],computador[i].data_atribuicao[2]);
               printf("\t Estado do computador: ");
               estado_pc(computador[N_PC],contador);
+              printf("\t Valor do computador:%.3f",computador[contador].valor_equipamento);
             }
 
 }
-
-
 /*--------------------------------------------------------------------------*/
 void estado_pc(struct geral computador[N_PC],int contador)
 {
+
+ printf("\n\t Valor que chega ao swtich:%d\n",computador[contador].estado_computador);
+
 switch (computador[contador].estado_computador){
+
 case 0 :
-printf("\toperacional\n\n\n\n");
+printf("\t operacional\n\n\n\n");
 break;
 
 case 1 :
-printf("\tintervencionar\n\n\n\n");
+printf("\t intervencionar\n\n\n\n");
 break;
 
 case 2 :
-printf("\tavariado\n\n\n\n");
+printf("\t avariado\n\n\n\n");
 break;
 
 default:
-printf("\tNão atribuida\n\n\n\n");
+printf("\t Não atribuida\n\n\n\n");
 break;
 }
-
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
@@ -211,4 +218,5 @@ void gravar()
 
 }
 /*--------------------------------------------------------------------------*/
+
 
