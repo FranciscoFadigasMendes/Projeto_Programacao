@@ -6,7 +6,7 @@
 
 
 void menu_inicial();
-void opc_menu();
+void opc_menu(int opc);
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -33,7 +33,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     char descricao[200];
 };
 
-int contador[0];   // protótipo de uma matriz de 1 uma posição para servir de contador
+int contador=0;   // matriz de 1 uma posição para servir de contador
 
 
 //------------------------------------------------------
@@ -41,8 +41,15 @@ int contador[0];   // protótipo de uma matriz de 1 uma posição para servir de
 
 int main()
 {
-    menu_inicial();
-    opc_menu();
+    int opc;
+
+    do{
+        menu_inicial();
+        fflush(stdin);
+        scanf("%d",&opc);
+        opc_menu(opc);
+    }
+    while(opc=!(0));
 
 return 0;
 }
@@ -55,7 +62,7 @@ void menu_inicial()                 //Função que imprime o display do menu pri
 setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
 
 printf("\n\n\n\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
-printf("Total de Computadores: %d\t\t\t",contador[0]);
+printf("Total de Computadores: %d\t\t\t",contador);
 printf("Valor dos Computadores(euros):(memoria a definir)\n");
 printf("Intervenções Solicitadas:\t\t\t\t\t");
 printf("Intervenções Efetuadas:(memoria a definir)\n\n");
@@ -72,12 +79,8 @@ printf("Selecione a Opção:");
 
 //-------------------------------------------------------
 
-void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
+void opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
 {
-    char opc;
-
-    fflush(stdin);
-    scanf("%d",&opc);
 
     switch(opc)
     {
@@ -117,21 +120,23 @@ void opc_menu()  //Função que vai ler a opcção do utilizador e redirecioná-
 /*--------------------------------------------------------------------------*/
 void add_computador()
 {
-    int i,n;
+    int i;
     struct geral computador[N_PC];
 
-    contador[0]++;
+    printf("contador:%d\n",contador);
+
 
     printf("\nIntroduza o Número de Identificação:\n");
     fflush(stdin);
-    scanf("%d",&computador[contador[0]].add_numero_id);
+    scanf("%d",&computador[contador].add_numero_id);
+
+    contador++;
 
         printf("\n0:%d\n",computador[0].add_numero_id);
         printf("\n1:%d\n",computador[1].add_numero_id);
         printf("\n2:%d\n",computador[2].add_numero_id);
         printf("\n3:%d\n",computador[3].add_numero_id);
 
-    main();
 }
 /*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
@@ -164,5 +169,4 @@ void sair()
 
 }
 /*--------------------------------------------------------------------------*/
-
 
