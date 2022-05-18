@@ -17,19 +17,19 @@ void sair();
 
 void estado_pc();
 
-int contador=0;   // inicializa o contador a 0
+int contador = 0;   // inicializa o contador a 0
 
 
 struct geral{               //Estrutura que contem todas as variáveis
     int add_numero_id;
     char designacao[50];
     char nome_colab[50];
-    int data_atribuicao[2];
+    int data_atribuicao[3];
     int estado_computador;
     float valor_equipamento;
     char codigo_int[50];
     int numero_id;
-    int data_pedido[2];
+    int data_pedido[3];
     char descricao[200];
 };
 
@@ -104,7 +104,6 @@ int opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirec
         gravar();
         break;
     case 0:
-        sair();
         break;
     default:
         printf("\n\nEscolha apenas uma das opções\n\n");
@@ -156,7 +155,7 @@ void add_computador()
               printf("-->Computador Nº%d \n",i+1);
               printf("\t Designação: %s \n",computador[contador].designacao[50]);
               printf("\t Nome do Colaborador:% s \n",computador[contador].nome_colab[50]);
-              printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[0].data_atribuicao[0],computador[0].data_atribuicao[1],computador[0].data_atribuicao[2]);
+              printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[i].data_atribuicao[0],computador[i].data_atribuicao[1],computador[i].data_atribuicao[2]);
               printf("\t Estado do computador: ");
               estado_pc(computador[N_PC],contador);
             }
