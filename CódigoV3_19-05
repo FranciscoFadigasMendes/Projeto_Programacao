@@ -33,7 +33,7 @@ struct geral{               //Estrutura que contem todas as variáveis
     char descricao[200];
 };
 
-int contador=0;   // matriz de 1 uma posição para servir de contador
+int contador=0;   // inicilaiza o contador a 0
 
 
 //------------------------------------------------------
@@ -49,7 +49,9 @@ int main()
         scanf("%d",&opc);
         opc_menu(opc);
     }
-    while(opc=!(0));
+    while(opc=!0);
+
+    printf("-----------------------------------------------------");
 
 return 0;
 }
@@ -61,7 +63,7 @@ void menu_inicial()                 //Função que imprime o display do menu pri
 
 setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
 
-printf("\n\n\n\n\t\t\t\t\tGestão de Computadores Portáteis\n\n");
+printf("\n\n\n\n\t\t\tGestão de Computadores Portáteis\n\n");
 printf("Total de Computadores: %d\t\t\t",contador);
 printf("Valor dos Computadores(euros):(memoria a definir)\n");
 printf("Intervenções Solicitadas:\t\t\t\t\t");
@@ -87,33 +89,26 @@ void opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redire
     case 1:
         add_computador();
         break;
-
     case 2:
         solicitar_intervencao();
         break;
-
     case 3:
         registar_intervencao();
         break;
-
     case 4:
         lista();
         break;
-
     case 5:
         info();
         break;
-
     case 6:
         gravar();
         break;
-
     case 7:
         sair();
         break;
-
     default:
-        printf("Escolha apenas uma das opções");
+        printf("\n\nEscolha apenas uma das opções\n\n");
     }
 
 }
@@ -130,12 +125,20 @@ void add_computador()
     fflush(stdin);
     scanf("%d",&computador[contador].add_numero_id);
 
-    contador++;
+    printf("Introduza a Designação do Computador:\n");
+    fflush(stdin);
+    scanf("%s",&computador[contador].designacao[50]);
 
-        printf("\n0:%d\n",computador[0].add_numero_id);
-        printf("\n1:%d\n",computador[1].add_numero_id);
-        printf("\n2:%d\n",computador[2].add_numero_id);
-        printf("\n3:%d\n",computador[3].add_numero_id);
+    printf("Introduza o Nome do Colaborador que foi atribuído o portátil:\n");
+    fflush(stdin);
+    scanf("%s",&computador[contador].nome_colab[50]);
+
+    contador++;       //soma +1 ao contador por cada vez que se adiciona um computador
+    printf("\nLista dos Computadores criados:\n");
+        for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
+            {
+            printf("\n\nComputador %d :\nCódigo-->%d\nDesignação-->%s\nNome do Colaborador:%s",i+1,computador[i].add_numero_id,computador[contador].designacao[50],computador[contador].nome_colab);
+            }
 
 }
 /*--------------------------------------------------------------------------*/
@@ -169,4 +172,3 @@ void sair()
 
 }
 /*--------------------------------------------------------------------------*/
- 
