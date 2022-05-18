@@ -6,7 +6,7 @@
 
 
 void menu_inicial();
-void opc_menu(int opc);
+int opc_menu(int);
 void add_computador();
 void solicitar_intervencao();
 void registar_intervencao();
@@ -46,10 +46,10 @@ int main()
         fflush(stdin);
         scanf("%d",&opc);
 
-        opc_menu(opc);
+        opc = opc_menu(opc);
 
         printf("\n\n---------------------------------------------------------------");
-    }while(opc=!0);
+    }while(opc != 0);
 
 
 return 0;
@@ -80,7 +80,7 @@ printf("Selecione a Opção:");
 
 //-------------------------------------------------------
 
-void opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
+int opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
 {
 
     switch(opc)
@@ -109,12 +109,12 @@ void opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redire
     default:
         printf("\n\nEscolha apenas uma das opções\n\n");
     }
-
+    return opc;
 }
 /*--------------------------------------------------------------------------*/
 void add_computador()
 {
-    int i;
+    int i=0;
     struct geral computador[N_PC];
 
     printf("contador:%d\n",contador);
@@ -135,52 +135,54 @@ void add_computador()
     printf("Data de Atribuição do Computador:\n");  //Adicionar Data em que foi atribuido o computador ao colaborador
         printf("Dia:");
         fflush(stdin);
-        scanf("%d",&computador[contador].data_atribuicao[0]);
+        scanf("%d", &computador[contador].data_atribuicao[0]);
 
         printf("Mês:");
         fflush(stdin);
-        scanf("%d",&computador[contador].data_atribuicao[1]);
+        scanf("%d", &computador[contador].data_atribuicao[1]);
 
         printf("Ano:");
         fflush(stdin);
-        scanf("%d",&computador[contador].data_atribuicao[2]);
+        scanf("%d", &computador[contador].data_atribuicao[2]);
 
-      printf("Estado do computador:\n\ 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n");
-      scanf("%d",&computador[contador].estado_computador);
+      printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n");
+      scanf("%d", &computador[contador].estado_computador);
 
+					contador++;         //soma +1 ao contador por cada vez que se adiciona um computador
 
-
-
-    contador++;       //soma +1 ao contador por cada vez que se adiciona um computador
-
-    printf("\nLista dos Computadores criados:\n");
+   printf("\nLista dos Computadores criados:\n");
         for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
             {
-							printf("Computador: Nº%d \n",computador[contador].add_numero_id);
+              printf("-->Computador Nº%d \n",i+1);
               printf("\t Designação: %s \n",computador[contador].designacao[50]);
-              printf("\t Nome do Colaborador:%s \n",computador[contador].nome_colab);
-              printf("\t Data Atribuição do Computador: %d-%d-%d",computador[contador].data_atribuicao[0],computador[contador].data_atribuicao[1],computador[contador].data_atribuicao[2]);
-              estado_pc();
+              printf("\t Nome do Colaborador:% s \n",computador[contador].nome_colab[50]);
+              printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[0].data_atribuicao[0],computador[0].data_atribuicao[1],computador[0].data_atribuicao[2]);
+              printf("\t Estado do computador: ");
+              estado_pc(computador[N_PC],contador);
             }
+
 }
+
+
 /*--------------------------------------------------------------------------*/
-void estado_pc(struct geral computador[N_PC])
+void estado_pc(struct geral computador[N_PC],int contador)
 {
 switch (computador[contador].estado_computador){
 case 0 :
-printf("operacional\n");
+printf("\toperacional\n\n\n\n");
 break;
 
 case 1 :
-printf("intervencionar\n");
+printf("\tintervencionar\n\n\n\n");
 break;
 
 case 2 :
-printf("avariado\n");
+printf("\tavariado\n\n\n\n");
 break;
 
 default:
-printf("Não atribuida\n");
+printf("\tNão atribuida\n\n\n\n");
+break;
 }
 
 }
@@ -206,11 +208,6 @@ void info()
 }
 /*--------------------------------------------------------------------------*/
 void gravar()
-{
-
-}
-/*--------------------------------------------------------------------------*/
-void sair()
 {
 
 }
