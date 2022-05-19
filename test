@@ -149,10 +149,8 @@ void add_computador()
         scanf("%d",&computador[contador].data_atribuicao[2]);}
         while(computador[contador].data_atribuicao[2]<1999 || computador[contador].data_atribuicao[2]>2100);
 
-        do{
         printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n"); //Adicionar Estado do Computador
-        scanf("%d",&computador[contador].estado_computador);}
-        while(computador[contador].estado_computador !=0 || computador[contador].estado_computador !=1 || computador[contador].estado_computador !=2);
+        scanf("%d",&computador[contador].estado_computador);
 
         printf("Valor do Computador:");
 
@@ -219,21 +217,17 @@ void lista()
               estado_pc(computador[i].estado_computador);
               printf("\t Valor do computador:%.2f euros",computador[i].valor_equipamento);
             }
+            do{
             printf("\n\tVoltar para menu Y/N?\n");
             fflush(stdin);
             scanf("%c", &Q);
-        do{
-            switch(Q){
-                case 'Y':
-                case 'y':
-                main();
-                break;
-
-                default:
-                i = 2;
-                break;
+            if ((Q == 'y') || (Q == 'Y')){
+                Q = 'Y';
             }
-            }while(i = 2);
+            else {
+                Q = 'N';
+            }
+            }while(Q == 'N');
 }
 /*--------------------------------------------------------------------------*/
 void info()
