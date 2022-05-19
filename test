@@ -149,8 +149,10 @@ void add_computador()
         scanf("%d",&computador[contador].data_atribuicao[2]);}
         while(computador[contador].data_atribuicao[2]<1999 || computador[contador].data_atribuicao[2]>2100);
 
+        do{
         printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n"); //Adicionar Estado do Computador
-        scanf("%d",&computador[contador].estado_computador);
+        scanf("%d",&computador[contador].estado_computador);}
+        while(computador[contador].estado_computador !=0 || computador[contador].estado_computador !=1 || computador[contador].estado_computador !=2);
 
         printf("Valor do Computador:");
 
@@ -165,6 +167,7 @@ void add_computador()
 void estado_pc(int K)
 {
 printf("\n\tValor que chega ao swtich:%d\n",K);
+
 
 switch (K){
 
@@ -198,10 +201,10 @@ void registar_intervencao()
 /*--------------------------------------------------------------------------*/
 void lista()
 {
-    int i=0;
-    char Q = '0';
+    int i;
+    char Q ;
     struct geral computador[N_PC];
-    do{
+
         for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
             {
               printf("-->Computador N %d \n",i+1);
@@ -219,13 +222,13 @@ void lista()
             printf("\n\tVoltar para menu Y/N?\n");
             fflush(stdin);
             scanf("%c", &Q);
+        do{
             switch(Q){
                 case 'Y':
-                main();
-                break;
                 case 'y':
                 main();
                 break;
+
                 default:
                 i = 2;
                 break;
