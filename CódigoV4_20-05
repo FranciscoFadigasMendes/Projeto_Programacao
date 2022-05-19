@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h> /*Biblioteca que permite usar acentos e caracteres especiais.
-                    NOTA: Esta biblioteca obriga o uso do Encoding "Windows-1252" */
+
 #define N_PC 25
 /*PROBLEMAS:
 --DO WHILE PARA DEPOIS DE DUAS VEZES,
 --STRINGS NO ADD:COMPUTADOR N FUNCIONAM,
+-- estado substitui ano
 
 */
 
@@ -62,21 +62,19 @@ return 0;
 void menu_inicial()                 //Função que imprime o display do menu principal
 {
 
-setlocale(LC_ALL, "Portuguese"); //AVISO-----Ainda não tem til
-
-printf("\n\n\n\n\t\t\tGestão de Computadores Portáteis\n\n");
+printf("\n\n\n\n\t\t\tGestao de Computadores Portateis\n\n");
 printf("Total de Computadores: %d\t\t\t",contador);
 printf("Valor dos Computadores(euros):(memoria a definir)\n");
-printf("Intervenções Solicitadas:\t\t\t\t\t");
-printf("Intervenções Efetuadas:(memoria a definir)\n\n");
+printf("Intervencoes Solicitadas:\t\t\t\t\t");
+printf("Intervencoes Efetuadas:(memoria a definir)\n\n");
 
 printf("1. Novo Computador\n");
-printf("2. Solicitar Intervenção\n");
-printf("3. Registar Intervenção\n");
+printf("2. Solicitar Intervencao\n");
+printf("3. Registar Intervencao\n");
 printf("4. Listar\n");
-printf("5. Informações\n");
+printf("5. Informacoes\n");
 printf("6. Gravar\n");
-printf("Selecione a Opção:");
+printf("Selecione a Opcao:");
 }
 
 //-------------------------------------------------------
@@ -120,19 +118,19 @@ void add_computador()
     printf("contador:%d\n",contador);
 
 
-    printf("\nIntroduza o Número de Identificação:\n");  //Adicionar Numero Identificação do Computador
+    printf("\nIntroduza o Numero de Identificacao:\n");  //Adicionar Numero Identificação do Computador
     fflush(stdin);
     scanf("%d", &computador[contador].add_numero_id);
 
-    printf("Introduza a Designação do Computador:\n");  //Adicionar Designação do Computador
+    printf("Introduza a Designacao do Computador:\n");  //Adicionar Designação do Computador
     fflush(stdin);
     scanf("%s", &computador[contador].designacao[50]);
 
-    printf("Introduza o Nome do Colaborador que foi atribuído o portátil:\n");  //Adicionar Nome do Colaborador
+    printf("Introduza o Nome do Colaborador que foi atribuido o portatil:\n");  //Adicionar Nome do Colaborador
     fflush(stdin);
     scanf("%s", &computador[contador].nome_colab[50]);
 
-    printf("Data de Atribuição do Computador:\n");  //Adicionar Data em que foi atribuido o computador ao colaborador
+    printf("Data de Atribuicao do Computador:\n");  //Adicionar Data em que foi atribuido o computador ao colaborador
         do{
         printf("Dia:");
         fflush(stdin);
@@ -140,7 +138,7 @@ void add_computador()
         while(computador[contador].data_atribuicao[0]<1 || computador[contador].data_atribuicao[0]>31);
 
         do{
-        printf("Mês:");
+        printf("Mes:");
         fflush(stdin);
         scanf("%d", &computador[contador].data_atribuicao[1]);}
         while(computador[contador].data_atribuicao[1]<1 || computador[contador].data_atribuicao[1]>12);
@@ -164,8 +162,8 @@ void add_computador()
    printf("\nLista dos Computadores criados:\n");
         for(i=0;i<contador;i++)                    //mostra uma lista dos computadores já criados
             {
-              printf("-->Computador Nº%d \n",i+1);
-              printf("\t Designação: %s \n",computador[i+1].designacao[50]);
+              printf("-->Computador N %d \n",i+1);
+              printf("\t Designacao: %s \n",computador[i+1].designacao[50]);
               printf("\t Nome do Colaborador:% s \n",computador[i+1].nome_colab[50]);
               printf("\t Data Atribuição do Computador: %d-%d-%d\n",computador[i].data_atribuicao[0],computador[i].data_atribuicao[1],computador[i].data_atribuicao[2]);
               printf("\t Estado do computador: ");
@@ -195,7 +193,7 @@ printf("\t avariado\n\n\n\n");
 break;
 
 default:
-printf("\t Não atribuida\n\n\n\n");
+printf("\t Nao atribuida\n\n\n\n");
 break;
 }
 }
