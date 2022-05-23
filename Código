@@ -1,0 +1,318 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N_PC 25
+
+void menu();
+int opc_menu(int opc);
+void add_computer();
+void solicitar_intervencao();
+void registar_intervencao();
+void list();
+void info();
+void gravar();
+void status_pc();
+
+typedef struct computer_info {               //Estrutura que contem todas as variáveis
+    int id;
+    int int_code;
+    char description[100];
+    char collaborator[50];
+    int date[9];
+    int status;
+    float value;
+    char summary[200];
+    char summary_int[200];
+    int int_cost;
+} computer_info;
+
+//Variáveis globais
+int pc_counter = 0;   // inicializa o contador de pc's criados a 0
+computer_info computers[N_PC]; // inicializa o vetor de estruturas
+int solicit_counter=0; // inicializa o contador de pedidos de solicitação a 0
+
+
+//------------------------------------------------------
+//------------------------------------------------------
+
+int main()
+{
+    int opc;
+
+    do{
+        menu();
+        fflush(stdin);
+        scanf("%d",&opc);
+        opc_menu(opc);
+        printf("\n\n---------------------------------------------------------------");
+    }
+    while(opc!=0);
+
+
+return 0;
+}
+//------------------------------------------------------
+//---------------Funcões Secundárias--------------------
+
+void menu()                 //Função que imprime o display do menu principal
+{
+
+printf("\n\n\n\n\t\t\tGestao de Computadores Portateis\n\n");
+printf("Total de Computadores: %d\t\t\t",pc_counter);
+printf("Valor dos Computadores(euros):(memoria a definir)\n");
+printf("Intervencoes Solicitadas:\t\t\t\t\t");
+printf("Intervencoes Efetuadas:(memoria a definir)\n\n");
+
+printf("1. Novo Computador\n");
+printf("2. Solicitar Intervencao\n");
+printf("3. Registar Intervencao\n");
+printf("4. Listar\n");
+printf("5. Informacoes\n");
+printf("6. Gravar\n");
+printf("\nSelecione a Opcao:");
+}
+
+//-------------------------------------------------------
+
+int opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirecioná-lo para o sub-menu correto
+{
+    switch(opc)
+    {
+    case 1:
+        add_computer();
+        break;
+    case 2:
+        solicitar_intervencao();
+        break;
+    case 3:
+        registar_intervencao();
+        break;
+    case 4:
+        list();
+        break;
+    case 5:
+        break;
+    case 6:
+        break;
+    case 0:
+        break;
+    default:
+        printf("\n\nEscolha apenas uma das opcoes\n\n");
+    }
+    return opc;
+}
+
+/*--------------------------------------------------------------------------*/
+void add_computer()       //Função para o primeiro sub-menu que tem o intuito de adicionar um PC à base de dados
+{
+
+    printf("Teste--contador:%d\n",pc_counter);
+
+    if(pc_counter == N_PC -1 ) { //Máxima capacidade de computadores
+        printf("\n Capacidade maxima de computadores atingida. Nao e possivel adicionar mais.\n");
+        return;
+    }
+
+
+    printf("\nIntroduza o Numero de Identificacao:\n");  //Adicionar Numero Identificação do Computador
+    scanf("%d",&computers[pc_counter].id);
+
+    printf("Introduza a Designacao do Computador:\n");  //Adicionar Designação do Computador
+    fflush(stdin);
+    scanf("%[^\n]s", computers[pc_counter].description);
+
+    printf("Introduza o Nome do Colaborador que foi atribuido o portatil:\n");  //Adicionar Nome do Colaborador
+    fflush(stdin);
+    scanf("%[^\n]s", computers[pc_counter].collaborator);
+
+    printf("Data de Atribuicao do Computador:\n");  //Adicionar Data em que foi atribuido o computador ao colaborador
+        do{
+            printf("\n\tDia:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[0]);}
+        while(computers[pc_counter].date[0]<1 || computers[pc_counter].date[0] >31);
+        do{
+            printf("\tMes:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[1]);}
+        while(computers[pc_counter].date[1]<1 || computers[pc_counter].date[1]>12);
+        do{
+            printf("\tAno:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[2]);}
+        while(computers[pc_counter].date[2]<2000 || computers[pc_counter].date[2] >2100);
+
+    do {
+        printf("Estado do computador:\n 0-->operacional\n 1-->Por intervencionar\n 2-->avariado\n"); //Adicionar Estado do Computador
+        scanf("%d",&computers[pc_counter].status);
+    } while (computers[pc_counter].status > 2 || computers[pc_counter].status < 0);
+
+   do{
+    printf("Valor do Computador:");
+    scanf("%f",&computers[pc_counter].value);}
+    while(computers[pc_counter].value < 0);
+
+    pc_counter++;         //soma +1 ao contador por cada vez que se adiciona um computador
+}
+
+/*--------------------------------------------------------------------------*/
+void solicitar_intervencao()  //função que permite solicitar uma intervenção a um PC em específico
+{
+    int i,num;
+    int repete;
+
+    for(i=0;i<pc_counter;i++)  //mostra quais os ID's dos PC's já criados
+            {
+            printf("\nID do PC Numero %d : %d",i+1,computers[i].id);
+            };
+
+    printf("Digite o codigo de intervencao especifico ao computador:");
+    fflush(stdin);
+    scanf("%[^\n]s", computers[i].int_code);
+
+    do{
+        printf("\nDigite o numero de identificacao do computador:");
+        fflush(stdin);
+        scanf("%d",&num);
+            for(i=0;i<pc_counter;i++)            //para achar o computador correspondente ao numero
+
+            {
+               if(computers[i].id == num){
+                     num = computers[i].id;
+                    printf("Designação do PC escolhido:");
+                    puts(computers[i].description);
+                    printf("Numero de ID: %d",computers[i].id);
+                    repete = 1;
+                    printf("\n\nEsse e o codigo do computador: N-%d",i+1);
+                    }
+                    else{
+                       printf("Esse computador nao existe");
+                    }
+      }
+      }while(repete != 1);
+
+    printf("\nData do Registo de Solicitacao:");
+        do{
+            printf("\n\tDia:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[3]);}
+        while(computers[pc_counter].date[3]<1 || computers[pc_counter].date[3] >31);
+        do{
+            printf("\tMes:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[4]);}
+        while(computers[pc_counter].date[4]<1 || computers[pc_counter].date[4]>12);
+        do{
+            printf("\tAno:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[5]);}
+        while(computers[pc_counter].date[5]<2000 || computers[pc_counter].date[5] >2100);
+
+    printf("\nBreve Descricao do Problema:");
+    fflush(stdin);
+    scanf("%[^\n]s", computers[pc_counter].summary);
+
+   printf("\n\nResumo do Pedido:");
+
+        printf("\nCodigo de intervencao:");
+        puts(computers[i].int_code);
+
+        printf("\nNumero de Identicacao do Computador:%d",computers[num].id);
+
+        printf("\nData de Registo de Solicitacao: %d-%d-%d",computers[solicit_counter].date[3],computers[solicit_counter].date[4],computers[solicit_counter].date[5]);
+
+        printf("\nBreve Descricao do Problema:");
+        puts(computers[pc_counter].summary);
+        printf("\n\n\n\n\\n\n\n");
+
+
+    solicit_counter++; //soma +1 ao contador por cada vez que se adiciona uma solicitação de intervenção
+}
+/*--------------------------------------------------------------------------*/
+void registar_intervencao()   //funcção que pega permite registar as solicitações
+{
+    int answer;
+
+    printf("Introduza a data do registo da intervencao:");
+        do{
+            printf("\n\tDia:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[6]);}
+        while(computers[pc_counter].date[6]<1 || computers[pc_counter].date[6] >31);
+        do{
+            printf("\tMes:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[7]);}
+        while(computers[pc_counter].date[7]<1 || computers[pc_counter].date[7]>12);
+        do{
+            printf("\tAno:");
+            fflush(stdin);
+            scanf("%d",&computers[pc_counter].date[8]);}
+        while(computers[pc_counter].date[8]<2000 || computers[pc_counter].date[8] >2100);
+
+    printf("Breve descricao da Intervencao:");
+    scanf("%s", computers[pc_counter].summary_int);
+
+
+    printf("Custo da intervencao:");
+    scanf("%d",&computers[pc_counter].int_cost);
+
+
+    do{
+    printf("A intervencao arranjou o computador?\n\1--Sim\n0--Nao");
+    scanf("%d",&answer);}
+    while(answer == 0 || answer == 1);
+
+    switch(answer)
+    {
+        case 0:
+
+            break;
+        case 1:
+
+            break;
+
+        default:
+            printf("A resposta nao ficou registada");
+    }
+    /*Caso a intervenção não resolva totalmente o problema, será solicitada uma nova intervenção
+nesse computador. Caso a intervenção o justifique, o computador poderá ser considerado
+como avariado.
+Os dados da intervenção, incluindo o nome do colaborador e o estado do computador,
+deverão ser armazenados num “ficheiro de log” (ficheiro de texto). */
+
+
+
+}
+/*--------------------------------------------------------------------------*/
+void list()     // função que imprime as informações gerais dos dados introduzidos
+{
+    for(int i=0;i<pc_counter;i++)
+    {
+        printf("\n-->Computador N %d \n",i+1);
+        printf("\t Designacao: %s\n", computers[i].description);
+        printf("\t Nome do Colaborador: %s\n", computers[i].collaborator);
+        printf("\t Data Atribuicao do Computador: %d-%d-%d\n", computers[i].date[0],computers[i].date[1],computers[i].date[2]);
+        printf("\t Estado do computador: ");
+        if(computers[i].status == 0)
+            printf("\tO PC esta operacional\n");
+            else
+                if(computers[i].status == 1)
+                printf("\t O PC esta por intervencionar\n");
+                else
+                    if(computers[i].status == 2)
+                    printf("\t O PC esta avariado\n");
+                        else
+                        printf("\t Erro, Estado não lido");
+        printf("\t Valor do computador:%.2f euros",computers[i].value);
+    }
+}
+/*--------------------------------------------------------------------------*/
+void info()
+{
+
+}
+/*--------------------------------------------------------------------------*/
+void gravar()
+{
+
+}
