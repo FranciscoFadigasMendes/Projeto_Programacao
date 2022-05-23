@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define N_PC 25
-/*PROBLEMAS:
---DO WHILE PARA DEPOIS DE DUAS VEZES,
--- estado substitui ano
-
-*/
-
-
 
 void menu();
 int opc_menu(int opc);
@@ -108,16 +101,27 @@ int opc_menu(int opc)  //Função que vai ler a opcção do utilizador e redirec
 ///*--------------------------------------------------------------------------*/
 void add_computer()
 {
+    int erro=0,i;
 
     printf("Teste--contador:%d\n",pc_counter);
 
-    if(pc_counter == N_PC -1 ) { //maxima capacidade de computadores
+    if(pc_counter == N_PC -1 ) { //Máxima capacidade de computadores
         printf("\n Capacidade maxima de computadores atingida. Nao e possivel adicionar mais.\n");
         return;
     }
 
+    do{
     printf("\nIntroduza o Numero de Identificacao:\n");  //Adicionar Numero Identificação do Computador
     scanf("%d",&computers[pc_counter].id);
+
+        for(i=0;i<N_PC;i++){
+        if(computers[i].id = computers[i].id ;)
+
+///////////////////////Acabar segurança//////////////////////
+        }
+    }
+    while(erro=1)
+
 
     printf("Introduza a Designacao do Computador:\n");  //Adicionar Designação do Computador
     scanf("%s", computers[pc_counter].description);
@@ -157,27 +161,17 @@ void add_computer()
 ///*--------------------------------------------------------------------------*/
 void status_pc(int status)
 {
-printf("\n\tValor que chega ao swtich:%d\n",status);
+if(status = 0)
+    printf("\tO PC esta operacional\n");
+    else
+        if(status=1)
+        printf("\t O PC esta por intervencionar\n");
+        else
+            if(status=2)
+            printf("\t O PC esta avariado\n");
+                else
+                    printf("\t Erro, Estado não lido");
 
-
-switch (status){
-
-case 0 :
-printf("\t operacional\n\n");
-break;
-
-case 1 :
-printf("\t intervencionar\n\n");
-break;
-
-case 2 :
-printf("\t avariado\n\n");
-break;
-
-default:
-printf("\t Nao atribuida\n\n");
-break;
-}
 }
 ///*--------------------------------------------------------------------------*/
 void solicitar_intervencao()
@@ -216,37 +210,35 @@ void solicitar_intervencao()
                     printf("\n\nEsse e o codigo do computador: N-%d",i+1);
                     }
                     else{
-                       printf("fuck u");
+                       printf("Esse computador nao existe");
                     }
-
-            printf("\nTeste: N-%d --- \nnum = %d, \nrepete = %d, \ncomputador = %d, \npc_counter = %d\n",i, num, repete, computers[i].id, pc_counter);
       }
-      }while(repete == 0);
+      }while(repete != 1);
 
     printf("\nData do Registo de Solicitacao:");
         do{
-            printf("\tDia:");
+            printf("\n\tDia:");
             fflush(stdin);
             scanf("%d",&computers[pc_counter].date[3]);}
         while(computers[pc_counter].date[3]<1 || computers[pc_counter].date[3] >31);
         do{
-            printf("\tMes:");
+            printf("\n\tMes:");
             fflush(stdin);
             scanf("%d",&computers[pc_counter].date[4]);}
         while(computers[pc_counter].date[4]<1 || computers[pc_counter].date[4]>12);
         do{
-            printf("\tAno:");
+            printf("\n\tAno:");
             fflush(stdin);
             scanf("%d",&computers[pc_counter].date[5]);}
         while(computers[pc_counter].date[5]<2000 || computers[pc_counter].date[5] >2100);
 
     printf("\nBreve Descricao do Problema:");
-    scanf("%[^\n]%*c",&computers[pc_counter].summary);
+    scanf("%[^\n]%*c", computers[pc_counter].summary);
 
 
    printf("\n\nResumo do Pedido:");
 
-        printf("Codigo de intervencao:");
+        printf("\nCodigo de intervencao:");
        puts(computers[i].int_code);
 
        printf("Numero de Identicação do Computador:%d",computers[num].id);
@@ -289,5 +281,6 @@ void list()
 //{
 //
 //}
+
 
 
