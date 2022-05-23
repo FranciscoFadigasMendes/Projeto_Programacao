@@ -29,7 +29,7 @@ typedef struct computer_info {               //Estrutura que contem todas as var
 int pc_counter = 0;   // inicializa o contador de pc's criados a 0
 computer_info computers[N_PC]; // inicializa o vetor de estruturas
 int solicit_counter=0; // inicializa o contador de pedidos de solicitação a 0
-
+int int_counter=0;// inicializa o contador de intervençoesa 0
 
 //------------------------------------------------------
 //------------------------------------------------------
@@ -55,12 +55,15 @@ return 0;
 
 void menu()                 //Função que imprime o display do menu principal
 {
+   int i,total_value=0;
+
+   for(i=0;i<N_PC;i++){total_value += computers[i].value;} //contador para somar o valor total dos PC's criados
 
 printf("\n\n\n\n\t\t\tGestao de Computadores Portateis\n\n");
 printf("Total de Computadores: %d\t\t\t",pc_counter);
-printf("Valor dos Computadores(euros):(memoria a definir)\n");
-printf("Intervencoes Solicitadas:\t\t\t\t\t");
-printf("Intervencoes Efetuadas:(memoria a definir)\n\n");
+printf(" Valor dos Computadores(euros): %d\n",total_value);
+printf("Intervencoes Solicitadas: %d \t\t\t\t",solicit_counter);
+printf("Intervencoes Efetuadas: %d \n\n",int_counter);
 
 printf("1. Novo Computador\n");
 printf("2. Solicitar Intervencao\n");
@@ -68,6 +71,7 @@ printf("3. Registar Intervencao\n");
 printf("4. Listar\n");
 printf("5. Informacoes\n");
 printf("6. Gravar\n");
+printf("0. Sair\n");
 printf("\nSelecione a Opcao:");
 }
 
@@ -274,6 +278,10 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
         default:
             printf("A resposta nao ficou registada");
     }
+
+    int_counter++;
+
+
     /*Caso a intervenção não resolva totalmente o problema, será solicitada uma nova intervenção
 nesse computador. Caso a intervenção o justifique, o computador poderá ser considerado
 como avariado.
@@ -316,3 +324,4 @@ void gravar()
 {
 
 }
+
