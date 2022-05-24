@@ -252,7 +252,7 @@ void solicitar_intervencao()  //função que permite solicitar uma intervenção
 /*--------------------------------------------------------------------------*/
 void registar_intervencao()   //funcção que pega permite registar as solicitações
 {
-    int answer,i,num,repete;
+    int answer=3,i,num,repete;
 
         for(i=0;i<solicit_counter;i++)       //mostra todos os computador com solicitações pendentes
         {
@@ -287,7 +287,6 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
                     }
               }
       }while(repete != 1);
-
 
     printf("\nIntroduza a data do registo da intervencao:");
         do{
@@ -334,9 +333,9 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
                 computers[i].status = 0;
                 }
                     else
-                        printf("Erro");
+                        printf("Erro\n");
 
-    }while(answer != 0 || answer != 1);
+    }while(answer != 0 && answer != 1);
 
     int_counter++;
 
@@ -346,8 +345,6 @@ nesse computador. Caso a intervenção o justifique, o computador poderá ser co
 como avariado.
 Os dados da intervenção, incluindo o nome do colaborador e o estado do computador,
 deverão ser armazenados num “ficheiro de log” (ficheiro de texto). */
-
-
 
 }
 /*--------------------------------------------------------------------------*/
@@ -402,37 +399,36 @@ printf("Estados dos computadores:\n");
                         avariado++;
     }
 
-    printf("\nComputadores Operacionais: %d",operacional);
-    printf("\nComputadores por Intervencionar: %d",por_intervencionar);
-    printf("\nComputadores Avariados: %d",avariado);
+    printf("Computadores Operacionais: %d \n",operacional);
+    printf("Computadores por Intervencionar: %d \n",por_intervencionar);
+    printf("Computadores Avariados: %d \n",avariado);
 
-    for(i=0;i<N_PC;i++){total_value += computers[i].value;} //contador para somar o valor total das intervenções
+    for(i=0;i<int_counter;i++){total_value += computers[i].value;} //contador para somar o valor total das intervenções
     avg_int = total_value/pc_counter;
-    printf("Custo médio das intervencoes : %d ",avg_int);
+    printf("Custo medio das intervencoes : %d ",avg_int);
 
-    for(i=0;i<int_counter;i++)                         //o for serve para detetar a/as intervenção(ões) de menor custo
+
+   /*III. Intervenção(ões) com o menor custo.*/
+
+    for(i=1;i<int_counter;i++)                         //o for serve para detetar a/as intervenção(ões) de menor custo
         {
             if(computers[i].int_cost < computers[i-1].int_cost)
-                printf("Intervencao mais barata: %d",i+1);
+                printf("Intervencao mais barata e do registo N-%d no valor de %d",i,computers[i].value);
 
             if(computers[i].int_cost == computers[i-1].int_cost)
                 {
-                    equally_cheap[i]= i+1;
+                    equally_cheap[i]= i;
                     for(a=0;a<int_counter;a++)
                     {
-                       printf("Intervencoes mais baratas:");
-                       printf("%d",equally_cheap[i]);
+                       printf("Intervencoes mais baratas sao dos:");
+                       printf("Registo N-%d no valor de %d ",equally_cheap[i],computers[i].value);
                     }
                 }
         }
-
-
 }
 /*--------------------------------------------------------------------------*/
 void gravar()
 {
 
 }
-
-
 
