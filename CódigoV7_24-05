@@ -114,22 +114,26 @@ void add_computer()       //Função para o primeiro sub-menu que tem o intuito 
     int repete=1,i;
     printf("Teste--contador:%d\n",pc_counter);
 
-    if(pc_counter == N_PC -1 ) { //Máxima capacidade de computadores
+    if(pc_counter == N_PC -1 ) //Máxima capacidade de computadores
+        {
         printf("\n Capacidade maxima de computadores atingida. Nao e possivel adicionar mais.\n");
         return;
-    }
+        }
 
     do{
         printf("\nIntroduza o Numero de Identificacao:\n");  //Adicionar Numero Identificação do Computador
         scanf("%d",&computers[pc_counter].id);
 
-                for(i=0;i<N_PC;i++)            //o for vai ler todos os id's criados e se algum for igual pede outro
+                for(i=0;i<pc_counter;i++)            //o for vai ler todos os id's criados e se algum for igual pede outro
                 {
                     if(computers[pc_counter].id == computers[i].id)
                         {
                             printf("Esse ID e igual ao de outro computador, insira outra");
                             repete=0;
                         }
+                        else
+                            if(computers[pc_counter].id != computers[i].id)
+                            printf("\nID VALIDO\n");
                 }
 
     }while(repete !=1);
@@ -424,3 +428,5 @@ void gravar()
 {
 
 }
+
+
