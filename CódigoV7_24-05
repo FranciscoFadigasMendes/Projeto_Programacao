@@ -133,7 +133,10 @@ void add_computer()       //Função para o primeiro sub-menu que tem o intuito 
                         }
                         else
                             if(computers[pc_counter].id != computers[i].id)
-                            printf("\nID VALIDO\n");
+                               {
+                                printf("ID VALIDO\n");
+                                repete=1;
+                               }
                 }
 
     }while(repete !=1);
@@ -270,9 +273,9 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
             {
                if(computers[i].id == num){
                     num = computers[i].id;
-                    printf("Designacao do PC escolhido:");
+                    printf("\t Designacao do PC escolhido: \n");
                     puts(computers[i].description);
-                    printf("Numero de ID: %d",computers[i].id);
+                    printf("\t Numero de ID: %d \n",computers[i].id);
                     repete = 1;
                     printf("\n\nEsse e o codigo do computador: N-%d\n",i+1);
                     printf("Esse codigo tem %d solicitacoes pendentes",computers[i].pending);
@@ -317,8 +320,7 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
     printf("A intervencao arranjou o computador? Caso nao tenha resultado sera considerado como avariado\n 1--Sim\n 0--Nao \n");
     printf("Resposta:");
     fflush(stdin);
-    scanf("%d",&answer);}
-    while(answer != 0 || answer != 1);
+    scanf("%d",&answer);
 
     if(answer == 0)
         {
@@ -333,6 +335,8 @@ void registar_intervencao()   //funcção que pega permite registar as solicita�
                 }
                     else
                         printf("Erro");
+
+    }while(answer != 0 || answer != 1);
 
     int_counter++;
 
@@ -352,6 +356,7 @@ void list()     // função que imprime as informações gerais dos dados introd
     for(int i=0;i<pc_counter;i++)
     {
         printf("\n-->Computador N %d \n",i+1);
+        printf("\t ID: %d\n",computers[i].id);
         printf("\t Designacao: %s\n", computers[i].description);
         printf("\t Nome do Colaborador: %s\n", computers[i].collaborator);
         printf("\t Data Atribuicao do Computador: %d-%d-%d\n", computers[i].date[0],computers[i].date[1],computers[i].date[2]);
@@ -366,9 +371,9 @@ void list()     // função que imprime as informações gerais dos dados introd
                     printf("\t O PC esta avariado\n");
                         else
                         printf("\t Erro, Estado não lido");
-        printf("\t Valor do computador:%.2f euros",computers[i].value);
-        printf("Numero de Solicitações Pendentes: %d",solicit_counter);
-        printf("Numero de Intervenções Efetuadas: %d",int_counter);
+        printf("\t Valor do computador:%.2f euros \n",computers[i].value);
+        printf("\t Numero de Solicitacoes Pendentes: %d \n",solicit_counter);
+        printf("\t Numero de Intervencoes Efetuadas: %d \n",int_counter);
 
     }
 }
@@ -428,5 +433,6 @@ void gravar()
 {
 
 }
+
 
 
